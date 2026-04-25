@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}New Post - Scholar Board{% endblock %}
+{% block title %}{{ 'Edit Post' if post else 'New Post' }} - Scholar Board{% endblock %}
 
 {% block content %}
 <main class="flex-grow w-full max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-16">
@@ -9,7 +9,7 @@
     <nav class="flex items-center gap-2 mb-10 text-on-surface-variant text-[12px] font-semibold tracking-widest uppercase">
         <a href="{{ url_for('list_posts') }}" class="hover:text-secondary transition-colors">Notices</a>
         <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-        <span class="text-secondary">New Post</span>
+        <span class="text-secondary">{{ 'Edit Post' if post else 'New Post' }}</span>
     </nav>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -20,25 +20,25 @@
                     <span class="material-symbols-outlined">edit_note</span>
                 </div>
                 <div>
-                    <h1 class="font-['Lexend'] text-[24px] leading-[1.4] font-semibold text-on-surface">Create Post</h1>
-                    <p class="text-[14px] text-on-surface-variant">Share your thoughts or questions with the academy.</p>
+                    <h1 class="font-['Lexend'] text-[24px] leading-[1.4] font-semibold text-on-surface">{{ 'Edit Post' if post else 'Create Post' }}</h1>
+                    <p class="text-[14px] text-on-surface-variant">{{ 'Update your notice content.' if post else 'Share your thoughts or questions with the academy.' }}</p>
                 </div>
             </div>
             <form method="POST" class="space-y-10">
                 <!-- Title -->
                 <div class="space-y-1">
                     <label class="text-[12px] font-semibold tracking-wider uppercase text-on-surface-variant" for="post-title">Discussion Title</label>
-                    <input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary rounded-lg py-3 px-6 text-[18px] placeholder:text-outline-variant transition-all" id="post-title" name="title" placeholder="What's on your mind today?" type="text" required/>
+                    <input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary rounded-lg py-3 px-6 text-[18px] placeholder:text-outline-variant transition-all" id="post-title" name="title" placeholder="What's on your mind today?" type="text" value="{{ post['title'] if post else '' }}" required/>
                 </div>
                 <!-- Content -->
                 <div class="space-y-1">
                     <label class="text-[12px] font-semibold tracking-wider uppercase text-on-surface-variant" for="post-body">Content</label>
-                    <textarea class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary rounded-lg py-3 px-6 text-[16px] placeholder:text-outline-variant transition-all resize-none" id="post-body" name="content" placeholder="Describe your topic in detail..." rows="12" required></textarea>
+                    <textarea class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary rounded-lg py-3 px-6 text-[16px] placeholder:text-outline-variant transition-all resize-none" id="post-body" name="content" placeholder="Describe your topic in detail..." rows="12" required>{{ post['content'] if post else '' }}</textarea>
                 </div>
                 <!-- Buttons -->
                 <div class="flex flex-col sm:flex-row justify-end items-center gap-4 pt-2">
                     <a href="{{ url_for('list_posts') }}" class="w-full sm:w-auto px-10 py-3 text-[16px] font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-lg transition-colors text-center">Cancel</a>
-                    <button class="w-full sm:w-auto px-10 py-3 text-[16px] font-semibold bg-secondary hover:bg-blue-700 text-white rounded-lg transition-all active:scale-95 shadow-lg shadow-secondary/20" type="submit">Post to Board</button>
+                    <button class="w-full sm:w-auto px-10 py-3 text-[16px] font-semibold bg-secondary hover:bg-blue-700 text-white rounded-lg transition-all active:scale-95 shadow-lg shadow-secondary/20" type="submit">{{ 'Update Post' if post else 'Post to Board' }}</button>
                 </div>
             </form>
         </div>

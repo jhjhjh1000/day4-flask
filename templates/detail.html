@@ -38,6 +38,18 @@
                 <span class="font-medium">List</span>
             </a>
         </div>
+        <div class="flex items-center gap-3 w-full sm:w-auto">
+            <a href="{{ url_for('edit_post', post_id=post['id']) }}" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 border border-slate-200 text-on-surface hover:bg-slate-50 rounded-lg transition-colors active:scale-95">
+                <span class="material-symbols-outlined text-[20px]">edit</span>
+                <span class="font-medium">Edit</span>
+            </a>
+            <form method="POST" action="{{ url_for('delete_post', post_id=post['id']) }}" onsubmit="return confirm('정말 삭제할까요?');">
+                <button type="submit" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-error-container text-on-error-container hover:bg-red-100 rounded-lg transition-colors active:scale-95 w-full">
+                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                    <span class="font-medium">Delete</span>
+                </button>
+            </form>
+        </div>
     </div>
 </main>
 {% endblock %}
