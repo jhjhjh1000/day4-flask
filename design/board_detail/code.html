@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholar Board - Notice Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "primary-container": "#131b2e",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-secondary-container": "#fefcff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-container": "#0b1c30",
+                        "on-primary-container": "#7c839b",
+                        "tertiary": "#000000",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-container": "#75859d",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container": "#eceef0",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-variant": "#e0e3e5",
+                        "surface-tint": "#565e74",
+                        "on-background": "#191c1e",
+                        "primary-fixed": "#dae2fd",
+                        "error": "#ba1a1a",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed": "#00174b",
+                        "secondary": "#0051d5",
+                        "surface-container-highest": "#e0e3e5",
+                        "error-container": "#ffdad6",
+                        "outline": "#76777d",
+                        "on-surface": "#191c1e",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "secondary-fixed": "#dbe1ff",
+                        "inverse-surface": "#2d3133",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "inverse-primary": "#bec6e0",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-secondary": "#ffffff",
+                        "primary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "secondary-container": "#316bf3",
+                        "surface": "#f7f9fb",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "base": "8px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "container-max": "1280px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Lexend"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h3": ["Lexend"],
+                        "h1": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f7f9fb;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-4 md:px-8 h-16 max-w-7xl mx-auto font-lexend antialiased">
+<div class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50">Scholar Board</div>
+<nav class="hidden md:flex items-center gap-8 h-full">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors active:scale-95 transition-transform duration-150" href="#">Dashboard</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors active:scale-95 transition-transform duration-150" href="#">Courses</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors active:scale-95 transition-transform duration-150" href="#">Community</a>
+<a class="text-blue-700 dark:text-blue-400 font-semibold border-b-2 border-blue-700 dark:border-blue-400 pb-1 active:scale-95 transition-transform duration-150" href="#">Notices</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="md:hidden p-2 text-slate-500">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-4xl mx-auto px-4 md:px-8 py-lg md:py-xl">
+<!-- Breadcrumb & Category -->
+<div class="mb-base flex items-center gap-2 text-on-primary-container font-label-caps uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]" data-icon="campaign">campaign</span>
+<span>Academic Notice</span>
+<span class="text-outline-variant mx-1">•</span>
+<span>Issue #482</span>
+</div>
+<!-- Post Content Area -->
+<article class="bg-surface-container-lowest rounded-xl border border-slate-200 overflow-hidden">
+<!-- Title Section -->
+<div class="p-8 border-b border-slate-100 bg-white">
+<h1 class="font-h1 text-h1 text-primary mb-4 leading-tight">Advanced English Proficiency: Upcoming Mock Examination Schedule and Registration</h1>
+<div class="flex flex-wrap items-center gap-gutter text-on-surface-variant font-body-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="person">person</span>
+</div>
+<span class="font-semibold text-primary">Dr. Alistair Vance</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span>October 24, 2024</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span>
+<span>1,248 Views</span>
+</div>
+</div>
+</div>
+<!-- Body Section -->
+<div class="p-8 md:p-12 prose prose-slate max-w-none">
+<div class="font-body-lg text-body-lg text-on-surface-variant space-y-6 leading-relaxed">
+<p>Dear Students,</p>
+<p>As we approach the mid-semester evaluation period, the Department of English Language and Literature is pleased to announce the schedule for the mandatory <strong>Mock IELTS and TOEFL Examinations</strong>. These sessions are designed to provide a realistic assessment environment to prepare you for official certification paths.</p>
+<div class="my-lg p-6 bg-surface-container-low rounded-lg border-l-4 border-secondary">
+<h4 class="font-h3 text-h3 text-primary mb-2">Key Dates</h4>
+<ul class="space-y-2 list-none p-0">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span>IELTS Listening &amp; Reading: Nov 12, 09:00 AM</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span>IELTS Writing: Nov 13, 02:00 PM</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span>TOEFL Integrated Session: Nov 15, 10:00 AM</span>
+</li>
+</ul>
+</div>
+<p>Registration for these sessions will open via the Scholar Board portal starting tomorrow at 08:00 AM. Please ensure your student profile is up to date and that you have completed the prerequisite "Grammar &amp; Synthesis" module (Level B2+).</p>
+<div class="relative w-full h-64 rounded-lg overflow-hidden my-lg">
+<img alt="Student studying in a modern clean library" class="w-full h-full object-cover" data-alt="A bright modern university library with sunlight streaming through large windows and students focused on their laptops and books" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgPZyo-7sNkd1QkWAvmbUXbsj05wZA_xw-IcDsYMF9lS_1zqTarYhRz5yHpUuK28jDlLANkDuPmc1hCYPSw1Q4Pm-OxAPdKfQGVHSh1x16AxXyFCHuejMhJBuPX4gj4_Pt4dCaK9gzJCDJmjhVxZRA6xV_iBNdyrH7cyvPUAB_arfsquAiiN653xZu7MYwq3jNMQxndpwyGDnlQl8NlW9qmymMcDh5zPdfWcw8vfStOlAZfWSUh2tgjFkZvG_i9sem9cranAfZlkU"/>
+</div>
+<p>Failure to participate in the mock exams may impact your final grading for the Academic Writing component. If you have any scheduling conflicts, please contact the administrative office no later than Friday.</p>
+<p>Regards,<br/><span class="font-semibold text-primary">Academic Excellence Committee</span></p>
+</div>
+</div>
+<!-- Attachments Section (Optional context) -->
+<div class="px-8 pb-8">
+<div class="flex items-center gap-3 p-4 bg-surface rounded-lg border border-slate-100">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="description">description</span>
+<div class="flex-grow">
+<div class="font-body-sm font-medium text-primary">Examination_Rules_v2.pdf</div>
+<div class="text-xs text-on-surface-variant">1.4 MB • PDF Document</div>
+</div>
+<button class="text-secondary font-semibold text-body-sm hover:underline">Download</button>
+</div>
+</div>
+</article>
+<!-- Action Buttons -->
+<div class="mt-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-surface-container-highest text-on-surface-variant hover:bg-slate-200 rounded-lg transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_list_bulleted">format_list_bulleted</span>
+<span class="font-medium">List</span>
+</button>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 border border-slate-200 text-on-surface hover:bg-slate-50 rounded-lg transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+<span class="font-medium">Edit</span>
+</button>
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-error-container text-on-error-container hover:bg-red-100 rounded-lg transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+<span class="font-medium">Delete</span>
+</button>
+</div>
+</div>
+<!-- Next/Previous Navigation -->
+<div class="mt-xl grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-slate-200 pt-lg">
+<a class="group p-4 rounded-lg hover:bg-white transition-colors" href="#">
+<div class="text-xs text-on-surface-variant uppercase mb-1">Previous Notice</div>
+<div class="font-medium text-primary group-hover:text-secondary transition-colors truncate">Update on Campus Wi-Fi Infrastructure</div>
+</a>
+<a class="group p-4 rounded-lg hover:bg-white transition-colors text-right" href="#">
+<div class="text-xs text-on-surface-variant uppercase mb-1">Next Notice</div>
+<div class="font-medium text-primary group-hover:text-secondary transition-colors truncate">New English Literature Book Club Meeting</div>
+</a>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 w-full mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center py-8 px-4 md:px-8 max-w-7xl mx-auto gap-4 font-lexend text-sm">
+<div class="flex flex-col md:flex-row items-center gap-4">
+<span class="font-semibold text-slate-900 dark:text-slate-50">English Academy</span>
+<span class="text-slate-500 dark:text-slate-400">© 2024 English Academy. All rights reserved.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-opacity duration-200" href="#">Academic Integrity</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-opacity duration-200" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+</body></html>

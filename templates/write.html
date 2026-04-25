@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}New Post - Scholar Board{% endblock %}
+
+{% block content %}
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-16">
+<div class="max-w-4xl mx-auto">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 mb-10 text-on-surface-variant text-[12px] font-semibold tracking-widest uppercase">
+        <a href="{{ url_for('list_posts') }}" class="hover:text-secondary transition-colors">Notices</a>
+        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+        <span class="text-secondary">New Post</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- Form -->
+        <div class="lg:col-span-8 bg-white border border-slate-200 rounded-xl p-6 md:p-10 shadow-sm">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-white">
+                    <span class="material-symbols-outlined">edit_note</span>
+                </div>
+                <div>
+                    <h1 class="font-['Lexend'] text-[24px] leading-[1.4] font-semibold text-on-surface">Create Post</h1>
+                    <p class="text-[14px] text-on-surface-variant">Share your thoughts or questions with the academy.</p>
+                </div>
+            </div>
+            <form method="POST" class="space-y-10">
+                <!-- Title -->
+                <div class="space-y-1">
+                    <label class="text-[12px] font-semibold tracking-wider uppercase text-on-surface-variant" for="post-title">Discussion Title</label>
+                    <input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary rounded-lg py-3 px-6 text-[18px] placeholder:text-outline-variant transition-all" id="post-title" name="title" placeholder="What's on your mind today?" type="text" required/>
+                </div>
+                <!-- Content -->
+                <div class="space-y-1">
+                    <label class="text-[12px] font-semibold tracking-wider uppercase text-on-surface-variant" for="post-body">Content</label>
+                    <textarea class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary rounded-lg py-3 px-6 text-[16px] placeholder:text-outline-variant transition-all resize-none" id="post-body" name="content" placeholder="Describe your topic in detail..." rows="12" required></textarea>
+                </div>
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row justify-end items-center gap-4 pt-2">
+                    <a href="{{ url_for('list_posts') }}" class="w-full sm:w-auto px-10 py-3 text-[16px] font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-lg transition-colors text-center">Cancel</a>
+                    <button class="w-full sm:w-auto px-10 py-3 text-[16px] font-semibold bg-secondary hover:bg-blue-700 text-white rounded-lg transition-all active:scale-95 shadow-lg shadow-secondary/20" type="submit">Post to Board</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-6">
+            <!-- Rules -->
+            <div class="bg-primary-container p-6 rounded-xl text-white">
+                <div class="flex items-center gap-3 mb-3 text-secondary-fixed">
+                    <span class="material-symbols-outlined">gavel</span>
+                    <h2 class="text-[12px] font-semibold tracking-wider uppercase">Board Rules</h2>
+                </div>
+                <ul class="space-y-3 text-on-primary-container text-[14px]">
+                    <li class="flex gap-2">
+                        <span class="text-secondary-fixed">01.</span>
+                        <span>Be respectful to other students and instructors.</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-secondary-fixed">02.</span>
+                        <span>Keep discussions focused on English learning.</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-secondary-fixed">03.</span>
+                        <span>Do not share sensitive personal information.</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+</div>
+</main>
+{% endblock %}
