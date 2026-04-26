@@ -3,7 +3,10 @@
 {% block title %}{{ post['title'] }} - Scholar Board{% endblock %}
 
 {% block content %}
-<main class="flex-grow w-full max-w-4xl mx-auto px-4 md:px-8 py-10 md:py-16">
+<main class="relative flex-grow w-full max-w-4xl mx-auto px-4 md:px-8 py-10 md:py-16">
+    <div class="absolute inset-0 -z-10 pointer-events-none">
+        <div class="h-[320px] bg-gradient-to-r from-rose-50 via-amber-50 to-sky-50 blur-2xl opacity-75"></div>
+    </div>
     <!-- Breadcrumb -->
     <div class="mb-2 flex items-center gap-2 text-on-primary-container text-[12px] font-semibold tracking-wider uppercase">
         <span class="material-symbols-outlined text-[16px]">campaign</span>
@@ -13,7 +16,7 @@
     </div>
 
     <!-- Post Content -->
-    <article class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+    <article class="bg-white/90 backdrop-blur rounded-2xl border border-rose-100 overflow-hidden shadow-sm">
         <!-- Title Section -->
         <div class="p-8 border-b border-slate-100 bg-white">
             <h1 class="font-['Lexend'] text-[40px] leading-[1.2] font-bold text-primary mb-4">{{ post['title'] }}</h1>
@@ -33,13 +36,13 @@
     <!-- Action Buttons -->
     <div class="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-3 w-full sm:w-auto">
-            <a href="{{ url_for('list_posts') }}" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-surface-container-highest text-on-surface-variant hover:bg-slate-200 rounded-lg transition-colors active:scale-95">
+            <a href="{{ url_for('list_posts') }}" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-rose-50 text-rose-500 hover:bg-rose-100 rounded-xl transition-colors active:scale-95">
                 <span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
                 <span class="font-medium">List</span>
             </a>
         </div>
         <div class="flex items-center gap-3 w-full sm:w-auto">
-            <a href="{{ url_for('edit_post', post_id=post['id']) }}" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 border border-slate-200 text-on-surface hover:bg-slate-50 rounded-lg transition-colors active:scale-95">
+            <a href="{{ url_for('edit_post', post_id=post['id']) }}" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 border border-rose-200 text-rose-500 hover:bg-rose-50 rounded-xl transition-colors active:scale-95">
                 <span class="material-symbols-outlined text-[20px]">edit</span>
                 <span class="font-medium">Edit</span>
             </a>

@@ -3,7 +3,10 @@
 {% block title %}{{ 'Edit Post' if post else 'New Post' }} - Scholar Board{% endblock %}
 
 {% block content %}
-<main class="flex-grow w-full max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-16">
+<main class="relative flex-grow w-full max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-16">
+<div class="absolute inset-0 -z-10 pointer-events-none">
+    <div class="h-[320px] bg-gradient-to-r from-rose-50 via-amber-50 to-sky-50 blur-2xl opacity-75"></div>
+</div>
 <div class="max-w-4xl mx-auto">
     <!-- Breadcrumb -->
     <nav class="flex items-center gap-2 mb-10 text-on-surface-variant text-[12px] font-semibold tracking-widest uppercase">
@@ -14,7 +17,7 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         <!-- Form -->
-        <div class="lg:col-span-8 bg-white border border-slate-200 rounded-xl p-6 md:p-10 shadow-sm">
+        <div class="lg:col-span-8 bg-white/90 backdrop-blur border border-rose-100 rounded-2xl p-6 md:p-10 shadow-sm">
             <div class="flex items-center gap-3 mb-10">
                 <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-white">
                     <span class="material-symbols-outlined">edit_note</span>
@@ -38,7 +41,7 @@
                 <!-- Buttons -->
                 <div class="flex flex-col sm:flex-row justify-end items-center gap-4 pt-2">
                     <a href="{{ url_for('list_posts') }}" class="w-full sm:w-auto px-10 py-3 text-[16px] font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-lg transition-colors text-center">Cancel</a>
-                    <button class="w-full sm:w-auto px-10 py-3 text-[16px] font-semibold bg-secondary hover:bg-blue-700 text-white rounded-lg transition-all active:scale-95 shadow-lg shadow-secondary/20" type="submit">{{ 'Update Post' if post else 'Post to Board' }}</button>
+                    <button class="w-full sm:w-auto px-10 py-3 text-[16px] font-semibold bg-gradient-to-r from-rose-400 to-orange-300 text-white rounded-xl transition-all active:scale-95 shadow-lg shadow-rose-200/60 hover:brightness-105" type="submit">{{ 'Update Post' if post else 'Post to Board' }}</button>
                 </div>
             </form>
         </div>
@@ -46,7 +49,7 @@
         <!-- Sidebar -->
         <aside class="lg:col-span-4 space-y-6">
             <!-- Rules -->
-            <div class="bg-primary-container p-6 rounded-xl text-white">
+            <div class="bg-gradient-to-br from-rose-300 via-orange-200 to-amber-100 p-6 rounded-2xl text-slate-800">
                 <div class="flex items-center gap-3 mb-3 text-secondary-fixed">
                     <span class="material-symbols-outlined">gavel</span>
                     <h2 class="text-[12px] font-semibold tracking-wider uppercase">Board Rules</h2>
