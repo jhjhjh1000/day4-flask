@@ -1,10 +1,11 @@
+import os
 import sqlite3
 import sys
 from pathlib import Path
 
 from crawler import MAX_ITEMS, RSS_URL, fetch_rss, parse_items
 
-DB_PATH = Path(__file__).resolve().parent / "board.db"
+DB_PATH = Path(os.environ.get("DB_PATH", Path(__file__).resolve().parent / "board.db"))
 
 
 def get_conn() -> sqlite3.Connection:

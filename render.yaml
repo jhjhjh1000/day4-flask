@@ -7,3 +7,5 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.10.10"
+      - key: DB_PATH
+        value: /var/data/board.db
