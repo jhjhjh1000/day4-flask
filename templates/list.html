@@ -55,6 +55,21 @@
     </div>
     {% endif %}
 
+    <section class="mb-6">
+        <form method="get" action="{{ url_for('list_posts') }}" class="flex flex-col md:flex-row md:items-center gap-2">
+            <input type="text" name="q" value="{{ q }}" placeholder="검색어를 입력하세요" class="w-full md:w-96 px-4 py-2.5 rounded-lg border border-slate-300 text-[14px] focus:outline-none focus:ring-2 focus:ring-secondary/30" />
+            <select name="sort" onchange="this.form.submit()" class="w-full md:w-52 px-3 py-2.5 rounded-lg border border-slate-300 text-[14px] bg-white focus:outline-none focus:ring-2 focus:ring-secondary/30">
+                <option value="latest" {% if sort == 'latest' %}selected{% endif %}>최신순</option>
+                <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>오래된순</option>
+                <option value="title" {% if sort == 'title' %}selected{% endif %}>제목순 (가나다)</option>
+            </select>
+            <button type="submit" class="inline-flex items-center gap-1 px-4 py-2.5 rounded-lg bg-secondary text-white text-[14px] font-semibold hover:bg-blue-700 transition-colors">
+                <span class="material-symbols-outlined text-[18px]">search</span>
+                검색
+            </button>
+        </form>
+    </section>
+
     <!-- Post List Table -->
     <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
         <!-- Table Header -->
@@ -79,17 +94,62 @@
             {% else %}
             <div class="px-6 py-16 text-center text-on-surface-variant">
                 <span class="material-symbols-outlined text-[48px] mb-4 block text-outline-variant">article</span>
+                {% if q %}
+                <p class="text-[18px] font-semibold mb-2">검색 결과가 없습니다</p>
+                {% else %}
                 <p class="text-[18px] font-semibold mb-2">No notices yet</p>
                 <p class="text-[14px]">Be the first to post on the board!</p>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
         <!-- Footer -->
         {% if posts %}
-        <div class="px-6 py-4 bg-slate-50 flex items-center justify-between">
-            <span class="text-[14px] text-on-surface-variant">Showing {{ posts|length }} notice{{ 's' if posts|length != 1 else '' }}</span>
-            <div class="flex gap-1">
-                <button class="w-8 h-8 flex items-center justify-center rounded-lg bg-secondary text-white font-semibold">1</button>
+        <div class="px-6 py-4 bg-slate-50 flex items-center justify-between gap-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200">
+                <span class="text-[12px] font-semibold tracking-wider uppercase text-on-surface-variant">Page</span>
+                <span class="text-[14px] font-bold text-secondary">{{ page }} / {{ total_pages }}</span>
+            </div>
+            {% set block_size = 10 %}
+            {% set block_start = ((page - 1) // block_size) * block_size + 1 %}
+            {% set block_end = block_start + block_size - 1 %}
+            {% if block_end > total_pages %}
+                {% set block_end = total_pages %}
+            {% endif %}
+            <div class="flex items-center gap-2 flex-wrap justify-end">
+                {% if page > 1 %}
+                <a href="{{ url_for('list_posts', page=page-1, q=q, sort=sort) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 text-[14px] font-semibold text-on-surface hover:bg-slate-100 transition-colors">
+                    <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+                    이전
+                </a>
+                {% else %}
+                <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 text-[14px] font-semibold text-slate-400 bg-slate-100 cursor-not-allowed">
+                    <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+                    이전
+                </span>
+                {% endif %}
+
+                <div class="flex items-center gap-1">
+                    {% for p in range(block_start, block_end + 1) %}
+                        {% if p == page %}
+                        <span class="w-8 h-8 inline-flex items-center justify-center rounded-lg bg-secondary text-white text-[13px] font-bold">{{ p }}</span>
+                        {% else %}
+                        <a href="{{ url_for('list_posts', page=p, q=q, sort=sort) }}" class="w-8 h-8 inline-flex items-center justify-center rounded-lg border border-slate-300 text-[13px] font-semibold text-on-surface hover:bg-slate-100 transition-colors">{{ p }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                {% if page < total_pages %}
+                <a href="{{ url_for('list_posts', page=page+1, q=q, sort=sort) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 text-[14px] font-semibold text-on-surface hover:bg-slate-100 transition-colors">
+                    다음
+                    <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                </a>
+                {% else %}
+                <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 text-[14px] font-semibold text-slate-400 bg-slate-100 cursor-not-allowed">
+                    다음
+                    <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                </span>
+                {% endif %}
             </div>
         </div>
         {% endif %}
